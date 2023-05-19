@@ -1,34 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bee Simulation</title>
-    <style>
-        body {
-            text-align: center;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-        canvas {
-            border: 1px solid #ccc;
-        }
-    </style>
+  <title>Rob's Bee Simulation</title>
 </head>
 <body>
-    <h1>Bee Simulation</h1>
-    <canvas id="simulationCanvas" width="800" height="600"></canvas>
+  <h1>Rob's Bee Simulation</h1>
+  <div id="status"></div>
+  <div id="plot"></div>
 
-    <script>
-        // JavaScript code to interact with the simulation goes here
-        // You can use the HTML canvas element and write JavaScript code to render the simulation.
-        // Please note that this part depends on the specific implementation of your bee simulation.
+  <script>
+    // Function to update the status
+    function updateStatus() {
+      fetch('/status')
+        .then(response => response.json())
+        .then(data => {
+          const statusElement = document.getElementById('status');
+          statusElement.innerHTML = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
 
-        // Example code to display a simple message
-        var canvas = document.getElementById("simulationCanvas");
-        var context = canvas.getContext("2d");
+    // Function to update the plot
+    function updatePlot() {
+      fetch('/plot')
+        .then(response => response.blob())
+        .then(blob => {
+          const plotElement = document.getElementById('plot');
+          const imageUrl = URL.createObjectURL(blob);
+          plotElement.innerHTML = `<img src="${imageUrl}" alt="Simulation Plot" />`;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
 
-        context.font = "24px Arial";
-        context.fillText("Rob's Bee Simulation", 200, 300);
-    </script>
+    // Fetch initial data on page load
+    updateStatus();
+    updatePlot();
+
+    // Refresh status and plot every 5 seconds
+    setInterval(() => {
+      updateStatus();
+      updatePlot();
+    }, 5000);
+  </script>
 </body>
 </html>
 
