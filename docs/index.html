@@ -36,14 +36,29 @@
         });
     }
 
+    // Function to update the engine data
+    function updateEngine() {
+      fetch('/engine')
+        .then(response => response.json())
+        .then(data => {
+          const engineElement = document.getElementById('engine');
+          engineElement.innerHTML = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
     // Fetch initial data on page load
     updateStatus();
     updatePlot();
+    updateEngine();
 
-    // Refresh status and plot every 5 seconds
+    // Refresh status, plot, and engine every 5 seconds
     setInterval(() => {
       updateStatus();
       updatePlot();
+      updateEngine();
     }, 5000);
   </script>
 </body>
