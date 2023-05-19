@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  backend:
+    image: backend
+    container_name: backend
+    mem_limit: 2G
+    cpus: 1
+    ports:
+        - "8000:80"
+    volumes:
+        - ../backend:/app
+    networks:
+      network:
+        aliases:
+          - backend
+          - beeland
+
+networks:
+  network:
+    name: network
+

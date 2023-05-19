@@ -1,0 +1,44 @@
+hives:
+  - name: Fuzzy Buzzy
+    color: "#ff0000"
+    position: [5, 5]
+    description: |
+      Some hive run by JP.
+
+  - name: Bgypt
+    color: "#0057b7"
+    position: [20, 20]
+
+  - name: Hive Clark
+    color: "#43EB2D"
+    position: [10,10]
+    description: Hive run by SC.
+
+  - name: Best Hive
+    color: darkred
+    position: [15, 5]
+    description: |
+      Hive run by CR, it will be the best
+
+  - name: Yet another Hive
+    color: tab:purple
+    position: [15, 15]
+    description: Hive run by Shekar
+
+  - name: Do not call me honey
+    color: darkviolet
+    position: [15, 10]
+    description: |
+      The hive run by Xiaogang...
+      
+  - name: Saturday Night Hive
+    color: "#2a39bf"
+    position: [10, 15]
+    description: |
+      A hive run by TM
+
+  - name: Shang Bee La
+    color: "#b6d7a8"
+    position: [5, 20]
+    description: |
+      Rainer's hive
